@@ -21,4 +21,13 @@ pip install -r requirements.txt
 - Enter the ```USERNAME```
 - Start the ```WordChat```
 
+## Features
+
+- Real-time communication.
+- Customized user identification with colors.
+- Option to clear the screen with ```/clear```.
+- Option to exit the chat with ```/exit```.
+- **Anti-spam feature:** Prevents users from sending empty messages.
+- Fixed host IP bug
+
 ## ⚠️ It is *MANDATORY* that the ```HOST``` is *online* before the ```CLIENT``` attempts to open a connection.
