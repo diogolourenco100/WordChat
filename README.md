@@ -17,7 +17,7 @@ To use WordChat, follow the steps below:
 3. Navigate to the WordChat directory.
 
     ```bash
-    cd wordchat
+    cd WordChat
     ```
 
 4. Install the necessary dependencies.
