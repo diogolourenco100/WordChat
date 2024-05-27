@@ -59,6 +59,7 @@ WordChat offers two main options: Host Server and Join a Server.
 - Customized user identification with colors.
 - Option to clear the screen.
 - Option to exit the chat.
+- **Anti-spam feature:** Prevents users from sending empty messages.
 
 ## Notes
 
@@ -69,8 +70,10 @@ Enjoy WordChat and have fun chatting with others in an anonymized way!
 
 ## Possible updates
 
-- "Group" mode (More than one connection to the same server
-### Have a suggestion? Send me on my discord ```GTgotinha#3137```
+- "Group" mode (More than one connection to the same server).
+
+### Have a suggestion? Send me a message on my Discord: `GTgotinha#3137`.
 
 ---
+
 ## ⚠️ Please note that the purpose of WordChat is to be anonymous, however this function *has not yet been assigned,* so I ask you to be patient.
