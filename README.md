@@ -53,14 +53,6 @@ WordChat offers two main options: Host Server and Join a Server.
 - Choose a color for your identification.
 - Connect to the server.
 
-## Features
-
-- Real-time communication.
-- Customized user identification with colors.
-- Option to clear the screen with ```/clear```.
-- Option to exit the chat with ```/exit```.
-- **Anti-spam feature:** Prevents users from sending empty messages.
-
 ## Notes
 
 - WordChat is in Beta version. If you encounter any issues, please report them so we can fix them.
