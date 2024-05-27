@@ -90,7 +90,7 @@ def input_thread(send_queue, color_func):
         if message.strip():
             send_queue.put(message)
         else:
-            print(red('\nEmpty message cannot be sent.\n'))
+            print(red('Empty message cannot be sent.'))
 
 
 def chat_screen(recv_queue):
