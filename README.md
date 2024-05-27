@@ -57,8 +57,8 @@ WordChat offers two main options: Host Server and Join a Server.
 
 - Real-time communication.
 - Customized user identification with colors.
-- Option to clear the screen.
-- Option to exit the chat.
+- Option to clear the screen with ```/clear```.
+- Option to exit the chat with ```/exit```.
 - **Anti-spam feature:** Prevents users from sending empty messages.
 
 ## Notes
@@ -70,7 +70,10 @@ Enjoy WordChat and have fun chatting with others in an anonymized way!
 
 ## Possible updates
 
-- "Group" mode (More than one connection to the same server).
+- **Group mode** (More than one connection to the same server).
+- **Admin mode** (Host will be able to manage who is in the session, being able to block the connection)
+- **Whitelist** (Host will be able to see who is wanting to join, and decide whether to accept or not)
+- **Speclist** (Users will be able to see who is in the session)
 
 ### Have a suggestion? Send me a message on my Discord: `GTgotinha#3137`.
 
