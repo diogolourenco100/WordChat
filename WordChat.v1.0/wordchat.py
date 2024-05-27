@@ -44,6 +44,12 @@ def banner_welcome():
     print(red('by Diogo S. Lourenco'))
     print(cyan('-')*50)
 
+def host_ipaddress():
+    hostname = socket.gethostname()
+    host_ip = socket.gethostbyname(hostname)
+
+    return host_ip
+
 def handle_receive(connection, recv_queue):
     while True:
         try:
@@ -80,7 +86,7 @@ def chat_screen(recv_queue):
         print(message)
 
 def server(port, username):
-    HOST = '127.0.0.1'
+    HOST = host_ipaddress()
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.bind((HOST, port))
     s.listen()
