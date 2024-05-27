@@ -28,6 +28,12 @@ def func_clear():
         except Exception as e:
             print(f'ERROR: {e}')
 
+def host_ipaddress():
+    hostname = socket.gethostname()
+    host_ip = socket.gethostbyname(hostname)
+
+    return host_ip
+
 def banner_wordchat():
     banner_text = pyfiglet.figlet_format("WordChat", font="big")
     print(cyan('-') * 50)
@@ -99,7 +105,8 @@ def chat_screen(recv_queue):
         print(message)
 
 def server(port, username, color_func):
-    HOST = '127.0.0.1'
+    HOST = host_ipaddress()
+    
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.bind((HOST, port))
     s.listen()
