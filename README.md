@@ -74,7 +74,7 @@ Enjoy WordChat and have fun chatting with others in an anonymized way!
 - **Criptography** - Proxies will be encrypted to ensure maximum anonymity of users.
 - **Group mode** - Multiple connections on one host.
 + **Speclist** - Normal users can use the ``/speclist`` command to see only the usernames of logged in users.
-- **Admin panel** - The host may have certain functions, such as the whitelist function, where it will accept or reject a connection, but if it is opened, it can automatically accept any connection.
+- **Admin panel** - The host can have certain functions, such as the whitelist function, where it will accept or reject a connection, ``/kick`` and ``/ban`` function on IP's of unwanted users, see all IP's connected with ``/speclist``, give ``/mute`` to some user for so many seconds, etc.
 + **Blacklist** - The user IPs banned by the host will be saved in a file on the host's machine, where if any of the IPs try to enter, they will be automatically denied by the system itself.
 
 ### Have a suggestion? Send me a message on my Discord: `GTgotinha#3137`.
