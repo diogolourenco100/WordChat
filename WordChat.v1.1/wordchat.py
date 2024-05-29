@@ -53,14 +53,12 @@ def banner_welcome():
 def handle_receive(connection, recv_queue, color):
     while True:
         try:
-            data = connection.recv(1024)
+            data = connection.recv(2048)
             if not data:
                 print(red('Connection closed by the other side.'))
                 break
             recv_queue.put(color(data.decode()))
         except Exception as e:
-            if "10054" not in str(e) and "10053" not in str(e):
-                print(f'ERROR: {e}')
             break
 
 def handle_send(connection, username, send_queue, color):
@@ -71,23 +69,20 @@ def handle_send(connection, username, send_queue, color):
             print(f'\nUser {username} connected.\n')
             banner_wordchat()
         elif message.lower() == '/exit':
-            print(red('\nClosing the chat...\n'))
+            print(red('Closing the chat...\n'))
             try:
                 user = color(username)
                 exit_command = red("/exit")
-                connection.sendall(str.encode(white(f"\nThe user {user} used the {exit_command} command. Closing connection...\n")))
-            except Exception as e:
-                if "10054" not in str(e):
-                    print(f'ERROR: {e}')
-            finally:
-                connection.close()
+                connection.sendall(str.encode(white(f"\n{user} logged out({exit_command})\n")))
+            except Exception:
+                pass
+            connection.close()
             break
         else:
             try:
-                connection.sendall(str.encode(f'{color(username)} -> {message}'))
+                connection.sendall(str.encode(f'{color(username)} -> {message}\n'))
             except Exception as e:
-                if "10054" not in str(e):
-                    print(f'ERROR: {e}')
+                print(f'ERROR: {e}')
                 break
 
 def input_thread(send_queue, color_func):
@@ -97,7 +92,6 @@ def input_thread(send_queue, color_func):
             send_queue.put(message)
         else:
             print(red('Empty message cannot be sent.'))
-
 
 def chat_screen(recv_queue):
     while True:
@@ -115,7 +109,7 @@ def server(port, username, color_func):
     print(yellow('\nWaiting for connection...'))
     connection, address = s.accept()
 
-    user_connected = yellow("\n-> User ") + f"{color_func(username)}" + yellow(" connected. <-\n")
+    user_connected = yellow("\n<User ") + f"{color_func(username)}" + yellow(" connected>\n")
     connection.sendall(str.encode(user_connected))
 
     recv_queue = queue.Queue()
@@ -127,9 +121,10 @@ def server(port, username, color_func):
     threading.Thread(target=chat_screen, args=(recv_queue,)).start()
     input_thread(send_queue, color_func)
 
-def client(HOST, port, username, color_func):
+def client(host, port, username, color_func):
+    print(yellow('<\nConnecting to host server...>\n'))
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    s.connect((HOST, port))
+    s.connect((host, port))
 
     user_connected = yellow("\n-> User ") + f"{color_func(username)}" + yellow(" connected. <-\n")
     s.sendall(str.encode(user_connected))
@@ -189,6 +184,9 @@ def start_server():
 def start_client():
     try:
         host = input(yellow('\nHOST: '))
+        if not host:
+            host = host_ipaddress()
+
         port = int(input(yellow('PORT: ')))
         username = input(yellow('USERNAME: '))
         color_func = menu_color()
