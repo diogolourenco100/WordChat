@@ -80,7 +80,7 @@ def handle_send(connection, username, send_queue, color):
             break
         else:
             try:
-                connection.sendall(str.encode(f'{color(username)} -> {message}\n'))
+                connection.sendall(str.encode(f'<{color(username)}> {message}\n'))
             except Exception as e:
                 print(f'ERROR: {e}')
                 break
@@ -109,7 +109,7 @@ def server(port, username, color_func):
     print(yellow('\nWaiting for connection...'))
     connection, address = s.accept()
 
-    user_connected = yellow("\n<User ") + f"{color_func(username)}" + yellow(" connected>\n")
+    user_connected = yellow("\n<User ") + f"{color_func(username)}" + yellow(" connected.>\n")
     connection.sendall(str.encode(user_connected))
 
     recv_queue = queue.Queue()
@@ -126,7 +126,7 @@ def client(host, port, username, color_func):
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.connect((host, port))
 
-    user_connected = yellow("\n-> User ") + f"{color_func(username)}" + yellow(" connected. <-\n")
+    user_connected = yellow("\n<User ") + f"{color_func(username)}" + yellow(" connected.>\n")
     s.sendall(str.encode(user_connected))
 
     recv_queue = queue.Queue()
